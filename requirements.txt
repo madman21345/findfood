@@ -1,0 +1,7 @@
+Flask
+flask-sqlalchemy
+python-dotenv
+urllib3
+requests
+sqlalchemy
+cloudinary
