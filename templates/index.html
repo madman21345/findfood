@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="main.css">
+  </head>
+  
+  <body>
+    <h1>
+      {{data[0].name}}
+    </h1>
+    
+    <main>
+    
+            
+      <section class="foods">
+        <div id = "restaurants">
+          
+        <!--
+        <div id = "restaurant">
+          <h2>Restaurant Name</h2>
+        </div>
+        
+        <div id = "description">
+          <p>description</p>
+        </div>
+                
+        <div id = "hours">
+          <p>Open hours today/next</p>
+        </div>
+        
+        <div id = "location">
+          <p>Address</p>
+        </div>-->
+        
+        <div class="actions">
+          <button class="back">Back</button>
+          <button class="next">Next</button>
+        </div>
+        
+        <!-- maybe a link to the website, idrk what were working with -->
+
+        </div>
+        
+        
+      </section>
+      
+      
+    
+    
+      <script>
+        fetch('/findfood')
+          .then(function(response) {
+            return response.json();
+          }).then(function(data) {
+            results = data.results;
+            //document.write(results[0].name);
+          
+          })
+//         <!-- stuf -->
+//         window.addEventListener('load', () => {
+//           const dRes = document.querySelector("#restaurants");
+          
+//           const ResName = document.createElement("div");
+//           ResName.classList.add("restaurant");            <!-- this is actually just for styling with css, but im gonna keep doing it with the tags cuz y not -->
+//           const name = document.createElement("h2");
+//           var txt = document.createTextNode("Restaurant Name");
+//           name.appendChild(txt);
+//           ResName.appendChild(name);
+//           dRes.appendChild(ResName);
+          
+//           const desc = document.createElement("div");
+//           desc.classList.add("description");
+//           const description = document.createElement("p");
+//           var txt = document.createTextNode("This is a tasty restaurant");
+//           description.appendChild(txt);
+//           desc.appendChild(description);
+//           dRes.appendChild(desc);
+          
+          
+        
+          
+//         });
+        
+        
+        getLocation();
+        
+        function getLocation() {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(transmitPosition);
+            console.log({{nlc}})
+            location.reload({{nlc}}); 
+          };
+        };
+
+        function transmitPosition(position) {
+          fetch("/save_location", {
+            method: "POST",
+            body: JSON.stringify({
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            }),
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json"
+            }
+          });
+        };
+        
+        
+        
+                                
+        
+      </script>
+      
+    </main>
+  </body>
+</html>
